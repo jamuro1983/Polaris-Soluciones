@@ -1,31 +1,42 @@
 ﻿$(document).ready(function () {
 
+    $("#hdnIdPaisSelect").val("000");
+    $("#hdnIdIdioma").val("000");
+    
+});
+
+
+$("#SelectPais").change(function () {
+    $("#hdnIdPaisSelect").val($("#SelectPais").val());
+});
+
+$("#SelectIdioma").change(function () {
+    $("#hdnIdIdioma").val($("#SelectIdioma").val());
 });
 
 
 
+//$(function () {
+//    $("#btnCrearPalabra").click(function () {
 
 
-$(function () {
-    $("#btnCrearPalabra").click(function () {
+        
+//        //var IdPalabra = $("#SelectPais").val();
+//        //var IdIdioma = $("#SelectIdioma").val();
+//        //var Palabra = $("#Palabra_DescripcionPalabra").val();
+//        //var Definicion = $("#Definicion1").val();
 
+//        //$.post("/Definicion/Crear", {
+//        //    idPais: IdPalabra,
+//        //    idIdioma: IdIdioma,
+//        //    palabra: Palabra,
+//        //    definicion: Definicion
+//        //}, function (data) {
+//        //    alert(data.toString());
+//        //}, "text");
 
-        var IdPalabra = $("#SelectPais").val();
-        var IdIdioma = $("#SelectIdioma").val();
-        var Palabra = $("#Palabra_DescripcionPalabra").val();
-        var Definicion = $("#Definicion1").val();
-
-        $.post("/Definicion/Crear", {
-            idPais: IdPalabra,
-            idIdioma: IdIdioma,
-            palabra: Palabra,
-            definicion: Definicion
-        }, function (data) {
-            alert(data.toString());
-        }, "text");
-
-    });
-});
+//    });
+//});
 
 
 

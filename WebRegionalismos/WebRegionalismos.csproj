@@ -259,6 +259,7 @@
       <LastGenOutput>RegionalismosModel.Context.cs</LastGenOutput>
       <DependentUpon>RegionalismosModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\RegionalismosModel.edmx.sql" />
     <Content Include="Models\RegionalismosModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RegionalismosModel.edmx</DependentUpon>
