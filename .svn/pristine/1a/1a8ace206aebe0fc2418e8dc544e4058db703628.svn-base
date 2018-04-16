@@ -1,0 +1,7 @@
+﻿
+@{
+    ViewBag.Title = "Página Principal";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebRegionalismos.Models.Idioma>
+
+
+<select id="SelectIdioma">
+    <option disabled selected>Seleccione Idioma</option>
+    @foreach (var item in Model)
+    {
+        <option value=@item.IdIdioma>@Html.DisplayFor(modelItem => item.DescripcionIdioma)</option>
+    }
+</select>

@@ -1,0 +1,99 @@
+﻿@model WebRegionalismos.Models.Definicion
+
+@{
+    ViewBag.Title = "Crear";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+
+    List<WebRegionalismos.Models.Pais> listaPais = ViewBag.ListaPaises;
+    List<WebRegionalismos.Models.Idioma> listaIdioma = ViewBag.ListaIdioma;
+}
+
+<h2 class="titulo">
+    Crear Nueva Palabra y Definicion
+</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-style-3">
+        <form id="frmCrearPalabra">
+            <fieldset>
+                <legend>Complete la información según corresponda</legend>
+
+                <div>
+                    @Html.Label("Seleccione el país", htmlAttributes: new { @class = "required" })
+                </div>
+                <div>
+                    @Html.Partial("~/Views/Pais/MostrarListaPaises.cshtml", listaPais)
+                    @Html.HiddenFor(model => model.IdPais, new { id = "hdnIdPaisSelect" })
+                </div>
+
+                <div>
+                    @Html.Label("Seleccione el idioma", htmlAttributes: new { @class = "required" })
+                </div>
+
+                <div>
+                    @Html.Partial("~/Views/Idioma/MostrarTododsIdiomas.cshtml", listaIdioma)
+                    @Html.HiddenFor(model => model.IdIdioma, new { id = "hdnIdIdioma" })
+                </div>
+
+
+                <div>
+                    @Html.Label(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblPalabra, htmlAttributes: new { @class = "required" })
+                </div>
+                <div>
+                    @Html.EditorFor(model => model.Palabra.DescripcionPalabra, new { htmlAttributes = new { @class = "input-field", @name ="DescripcionPalabra" } })
+                </div>
+
+                <div>
+                    @Html.Label(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDefinicionPalabra, htmlAttributes: new { @class = "required" })
+                </div>
+                <div>
+                    @Html.EditorFor(model => model.Definicion1, new { htmlAttributes = new { @class = "input-field", @name ="DefinicionPalabra" } })
+                </div>
+
+            </fieldset>
+
+            <div>
+                <div>
+                    <table class="botonNuevo">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button  id="btnCrearPalabra" value="Crear" class="botonGuardarSombreado">
+                                        Guardar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+}
+
+
+<table class="botonNuevo">
+    <tbody>
+        <tr>
+            <td>
+                <button class="botonVolverSombreado" onclick="location.href='@Url.Action("Index", "Definicion")'">
+                    Volver
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")
+
+
+<script src="~/Scripts/PalabrasDefinicion/CrearPalabraDefinicion.js"></script>

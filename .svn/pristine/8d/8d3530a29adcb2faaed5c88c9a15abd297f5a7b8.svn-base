@@ -1,0 +1,117 @@
+﻿@model IEnumerable<WebRegionalismos.Models.Idioma>
+
+@{
+    ViewBag.Title = "Catálogo de Idiomas";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Catálogo de Idiomas
+</h2>
+
+
+<table class="cinereousTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblIdioma)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblNombreIdioma)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblOpciones)
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdIdioma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionIdioma)
+                </td>
+                <td>
+
+                    <button class="botonEditarSombreado" onclick="location.href='@Url.Action("Editar", "Idioma", new { id = item.IdIdioma })'">
+                        Editar
+                    </button> |
+
+                    <button class="botonDetalleSombreado" onclick="location.href='@Url.Action("Detalle", "Idioma", new { id = item.IdIdioma })'">
+                        Detalle
+                    </button> |
+
+                    <button class="botonBorrarSombreado" onclick="location.href='@Url.Action("Eliminar", "Idioma", new { id = item.IdIdioma })'">
+                        Eliminar
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionIdioma)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionIdioma)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdIdioma }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdIdioma }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdIdioma })
+            </td>
+        </tr>
+    }
+
+</table>*@
+
+
+
+<div>
+    <table class="botonNuevo">
+        <tbody>
+            <tr>
+                <td>Incluir nuevo país:</td>
+                <td>
+                    <button class="botonNuevoSombreado" onclick="location.href='@Url.Action("Crear", "Idioma")'">
+                        Nuevo País
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")

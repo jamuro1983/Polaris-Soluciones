@@ -1,0 +1,62 @@
+﻿@model WebRegionalismos.Models.Palabra
+
+@{
+
+    ViewBag.Title = "Agregar Nueva Palabra";
+
+    List<WebRegionalismos.Models.Pais> listaPais = ViewBag.ListaPaises;
+    List<WebRegionalismos.Models.Idioma> listaIdioma = ViewBag.ListaIdioma;
+
+}
+
+<h2>Agregar nueva palabra</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Por favor complete la información solicitada</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.DescripcionPalabra, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DescripcionPalabra, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DescripcionPalabra, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Seleccione el país", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Partial("~/Views/Pais/MostrarListaPaises.cshtml", listaPais)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Seleccione el idioma", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.Partial("~/Views/Idioma/MostrarTododsIdiomas.cshtml", listaIdioma)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
+

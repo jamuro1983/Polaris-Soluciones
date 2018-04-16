@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebRegionalismos.Models.Pais>
+
+@{
+    ViewBag.Title = "Catálogo de Países";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Catálogo de Paises
+</h2>
+
+<table class="cinereousTable" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblPais)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDescripcionPais)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblOpciones)
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionPais)
+                </td>
+                <td>
+
+                    <button class="botonEditarSombreado" onclick="location.href='@Url.Action("Editar", "Pais", new { id = item.IdPais })'">
+                        Editar
+                    </button> |
+
+                    <button class="botonDetalleSombreado" onclick="location.href='@Url.Action("Detalle", "Pais", new { id = item.IdPais })'">
+                        Detalle
+                    </button> |
+
+                    <button class="botonBorrarSombreado" onclick="location.href='@Url.Action("Eliminar", "Pais", new { id = item.IdPais })'">
+                        Eliminar
+                    </button>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <table class="botonNuevo">
+        <tbody>
+            <tr>
+                <td>Incluir nuevo país:</td>
+                <td>
+                    <button class="botonNuevoSombreado" onclick="location.href='@Url.Action("Crear", "Pais")'">
+                        Nuevo País
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")

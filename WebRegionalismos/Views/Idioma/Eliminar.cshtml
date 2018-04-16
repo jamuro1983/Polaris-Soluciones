@@ -1,0 +1,78 @@
+﻿@model WebRegionalismos.Models.Idioma
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Eliminar Idioma
+</h2>
+
+<h3>¿Confirma que desea eliminar este registro?</h3>
+
+<div>
+
+    <hr />
+
+    <div class="form-style-3">
+        <form>
+            <fieldset>
+                <legend>Información General</legend>
+
+                <div>
+                    @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblIdioma)
+
+                    @Html.DisplayFor(model => model.IdIdioma)
+                </div>
+
+                <div>
+
+                    @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblNombreIdioma)
+
+                    @Html.DisplayFor(model => model.DescripcionIdioma)
+
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div>
+            <div>
+                <table class="botonNuevo">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button type="submit" value="Eliminar" class="botonGuardarSombreado">
+                                    Eliminar
+                                </button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<table class="botonNuevo">
+    <tbody>
+        <tr>
+
+            <td>
+                <button class="botonVolverSombreado" onclick="location.href='@Url.Action("Index", "Idioma")'">
+                    Volver
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")

@@ -1,0 +1,79 @@
+﻿@model WebRegionalismos.Models.Pais
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Eliminar País
+</h2>
+
+<h3>¿Confirma que desea eliminar este registro?</h3>
+<div>
+
+    <hr />
+
+    <div class="form-style-3">
+        <form>
+            <fieldset>
+                <legend>Información General</legend>
+
+                <div>
+                    @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblPais)
+
+                    @Html.DisplayFor(model => model.IdPais)
+                </div>
+
+                <div>
+
+                    @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDescripcionPais)
+
+                    @Html.DisplayFor(model => model.DescripcionPais)
+
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <div>
+                <table class="botonNuevo">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button type="submit" value="Eliminar" class="botonGuardarSombreado">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+    }
+
+</div>
+<table class="botonNuevo">
+    <tbody>
+        <tr>
+            <td>
+                <button class="botonVolverSombreado" onclick="location.href='@Url.Action("Index", "Pais")'">
+                    Volver
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")

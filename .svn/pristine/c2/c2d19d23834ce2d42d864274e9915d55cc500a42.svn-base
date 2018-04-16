@@ -1,0 +1,11 @@
+﻿body {
+}
+
+
+
+.titulo {
+    background-color: darksalmon;
+    color: white;
+    padding: 10px;
+    text-align: center;
+} 

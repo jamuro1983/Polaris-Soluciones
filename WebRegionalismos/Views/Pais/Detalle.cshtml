@@ -1,0 +1,62 @@
+﻿@model WebRegionalismos.Models.Pais
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Detalle
+</h2>
+
+
+<div class="form-style-3">
+    <form>
+        <fieldset>
+            <legend>Información General</legend>
+
+            <div>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblPais)
+
+                @Html.DisplayFor(model => model.IdPais)
+            </div>
+
+            <div>
+
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDescripcionPais)
+
+                @Html.DisplayFor(model => model.DescripcionPais)
+
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+<div>
+    <div>
+        <table class="botonNuevo">
+            <tbody>
+                <tr>
+                    <td>
+                        <button class="botonEditarSombreado" onclick="location.href='@Url.Action("Editar", "Pais", new { id = Model.IdPais })'">
+                            Editar
+                        </button> 
+                    </td>
+                    <td>
+                        <button class="botonVolverSombreado" onclick="location.href='@Url.Action("Index", "Pais")'">
+                            Volver
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")
+

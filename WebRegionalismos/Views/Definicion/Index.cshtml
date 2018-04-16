@@ -1,0 +1,92 @@
+﻿@model IEnumerable<WebRegionalismos.Models.Definicion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Catálogo de Palabras
+</h2>
+
+
+
+
+<table class="cinereousTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblPalabra)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblNombreIdioma)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDescripcionPais)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDefinicionPalabra)
+            </th>
+            <th>
+                @Html.DisplayName(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblOpciones)
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Palabra.DescripcionPalabra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Idioma.DescripcionIdioma)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Pais.DescripcionPais)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Definicion1)
+            </td>
+            <td>
+                <button class="botonEditarSombreado" onclick="location.href='@Url.Action("Editar", "Definicion", new { id = item.IdDefinicion })'">
+                    Editar
+                </button> |
+
+                <button class="botonDetalleSombreado" onclick="location.href='@Url.Action("Detalle", "Definicion", new { id = item.IdDefinicion })'">
+                    Detalle
+                </button> |
+
+                <button class="botonBorrarSombreado" onclick="location.href='@Url.Action("Eliminar", "Definicion", new { id = item.IdDefinicion })'">
+                    Eliminar
+                </button>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<div>
+    <table class="botonNuevo">
+        <tbody>
+            <tr>
+                <td>Incluir nuevo país:</td>
+                <td>
+                    <button class="botonNuevoSombreado" onclick="location.href='@Url.Action("Crear", "Definicion")'">
+                        Nueva Palabra
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")

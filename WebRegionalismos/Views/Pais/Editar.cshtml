@@ -1,0 +1,76 @@
+﻿@model WebRegionalismos.Models.Pais
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_mytemplate.cshtml";
+}
+
+<h2 class="titulo">
+    Editar País
+</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-style-3">
+        <form>
+            <fieldset>
+                <legend>Complete la información según corresponda</legend>
+
+                <div>
+                    @Html.Label(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblPais, htmlAttributes: new { @class = "required" })
+
+                    @Html.EditorFor(model => model.IdPais, new { htmlAttributes = new { @class = "input-field" } })
+                </div>
+
+                <div>
+                    @Html.Label(WebRegionalismos.Clases_Compartidas.VariablesGlobales.lblDescripcionPais, htmlAttributes: new { @class = "required" })
+
+                    @Html.EditorFor(model => model.DescripcionPais, new { htmlAttributes = new { @class = "input-field" } })
+                </div>
+            </fieldset>
+            <div>
+                <div>
+                    <table class="botonNuevo">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button type="submit" value="Guardar" class="botonGuardarSombreado">
+                                        Guardar
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+
+
+}
+
+<div>
+    <div>
+        <table class="botonNuevo">
+            <tbody>
+                <tr>
+                    <td>
+                        <button class="botonVolverSombreado" onclick="location.href='@Url.Action("Index", "Pais")'">
+                            Volver
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@Html.Partial("~/Views/Shared/_PiePagina.cshtml")
